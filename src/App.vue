@@ -28,7 +28,7 @@ export default {
 <style lang="less" >
 
 body {
-  background: url("https://cdn.jsdelivr.net/gh/liuluojie/imagebed/img/20211115110821.jpg") center center;
+  background: url("https://img-blog.csdnimg.cn/749a4f8725584c7894a766fbe625f092.png") center center;
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;

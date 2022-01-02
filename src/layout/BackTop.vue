@@ -22,7 +22,7 @@ export default {
     },
     needShowBackTop() {
       let currentHeight = document.documentElement.scrollTop || document.body.scrollTop
-      console.log(currentHeight)
+      // console.log(currentHeight)
       this.showBackTop = currentHeight > 400
     }
   },

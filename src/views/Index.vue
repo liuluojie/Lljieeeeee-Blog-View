@@ -1,9 +1,8 @@
 <template>
   <div class="center transparent clearfix content">
     <div class="main">
-
       <div class="banner">
-        <img src="https://cdn.jsdelivr.net/gh/liuluojie/imagebed/img/20211114154212.jpg" alt="">
+        <img src="https://cdn.u1.huluxia.com/g4/M02/EA/8C/rBAAdmGCmKKAU9zEAAJc4oKKvOU583.jpg" alt="">
       </div>
 
       <div class="hot-category">
@@ -38,14 +37,14 @@
           <div class="article-info">
             <h3><router-link :to="'/article/' +article.articleId">{{article.articleTitle}}</router-link></h3>
             <router-link :to="'/article/' +article.articleId">{{ article.articleSummary }}</router-link>
-            <div>
+            <div class="article-bottom">
               {{ article.createTime.substr(0, 10) }} / {{ article.articleVisits }} 阅读 / 0 评论 / {{article.articleLike}} 点赞
             </div>
           </div>
 
         </div>
       </div>
-      <div class="show-more">
+      <div v-show="showMore" @click="getArticlePage" class="show-more">
         显示更多
       </div>
 
@@ -84,6 +83,7 @@ export default {
       current: 0,
       size: 10,
       showMore: true,
+      style_test: []
     }
   },created() {
     this.getArticlePage()
@@ -97,12 +97,12 @@ export default {
       }
     },
     getArticlePage() {
-      this.loadingList = true
       this.current = this.current + 1
       getArticlePage(this.current, this.size)
           .then(res => {
-            console.log(res.data.data.list)
-            this.articleList = res.data.data.list
+            for (let i in res.data.data.list)  {
+              this.articleList.push(res.data.data.list[i])
+            }
             this.showMore = res.data.data.hasNext
           }).catch(err => {
 
@@ -179,7 +179,7 @@ export default {
         line-height: 144px;
         text-align: center;
         font-weight: 600;
-        background-image: url("https://cdn.jsdelivr.net/gh/liuluojie/imagebed/img/20211114154212.jpg");
+        background-image: url("https://cdn.u1.huluxia.com/g4/M01/EA/8D/rBAAdmGCmRiAZnlzAAV5GavFWJY978.jpg");
         background-size: 100%;
         a {
           color: white;
@@ -218,6 +218,7 @@ export default {
         position: relative;
         float: right;
         width: 660px;
+        height: 130px;
         font-size: 14px;
         a {
           display: -webkit-box;
@@ -232,7 +233,8 @@ export default {
           opacity: .85;
         }
         div {
-          padding: 20px 0 0;
+          position: absolute;
+          bottom: 0;
         }
       }
     }
@@ -277,6 +279,7 @@ export default {
   background-color: red;
   border-radius: 15px;
   margin: 20px auto 0;
+  cursor: pointer;
 }
 
 </style>

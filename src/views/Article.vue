@@ -131,6 +131,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+.content {
+  min-height: 600px;
+}
+
 .article-card {
   background-color: white;
   width: 1000px;
