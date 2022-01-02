@@ -3,10 +3,10 @@
   <header class="header">
     <div class="center">
       <div class="logo">
-        <h2>Lljieeeeee-Blog</h2>
+        <h2><a href="/">Lljieeeeee-Blog</a></h2>
       </div>
       <ul>
-        <li><a href="">首页</a></li>
+        <li><a href="/">首页</a></li>
         <li><a href="">分类</a></li>
         <li><a href="">标签</a></li>
         <li><a href="">归档</a></li>

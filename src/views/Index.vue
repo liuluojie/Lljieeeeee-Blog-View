@@ -38,7 +38,6 @@
           <div class="article-info">
             <h3><router-link :to="'/article/' +article.articleId">{{article.articleTitle}}</router-link></h3>
             <router-link :to="'/article/' +article.articleId">{{ article.articleSummary }}</router-link>
-
             <div>
               {{ article.createTime.substr(0, 10) }} / {{ article.articleVisits }} 阅读 / 0 评论 / {{article.articleLike}} 点赞
             </div>
@@ -46,7 +45,9 @@
 
         </div>
       </div>
-
+      <div class="show-more">
+        显示更多
+      </div>
 
     </div>
     <div class="aside">
@@ -54,7 +55,6 @@
 
       </div>
       <div class="info-card music">
-
       </div>
       <div class="info-card latest-article">
 
@@ -265,6 +265,18 @@ export default {
     width: 100%;
     height: 200px;
   }
+}
+
+.show-more {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  background-color: red;
+  border-radius: 15px;
+  margin: 20px auto 0;
 }
 
 </style>
