@@ -38,7 +38,7 @@ export default {
 .back-top {
   background-color: #fff;
   position: fixed;
-  right: 100px;
+  right: 50px;
   bottom: 100px;
   width: 40px;
   height: 40px;

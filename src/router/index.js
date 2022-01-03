@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Index from "@/views/Index";
 import Article from "@/views/Article";
+import Archive from "@/views/Archive";
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,13 @@ const routes = [
     component: Article,
     meta: {
       title: '文章'
+    }
+  },
+  {
+    path: "/archive",
+    component: Archive,
+    meta: {
+      title: '归档'
     }
   },
 ]

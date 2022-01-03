@@ -78,6 +78,7 @@ export default {
       getArticleById(this.article.articleId)
           .then(res => {
             this.article = res.data.data.articleInfo.article
+            document.title = this.article.articleTitle + ' - Lljieeeeee 个人博客'
             marked.setOptions({
                   renderer: new marked.Renderer(),
                   highlight: function(code) {
