@@ -11,7 +11,29 @@
         </div>
         <div class="article-content markdown-body" ref="article" v-html="html"></div>
         <hr>
+
+        <div class="note info no-icon">
+            <div style="padding: 5px 0" class="item">
+              <span><i style="margin-right: 10px" class="fa fa-user"></i>版权属于：</span>
+              <span class="text">
+                <a style="color: black;text-decoration: none" href="https://blog.lljieeeeee.top" target="_blank">Lljieeeeee</a>
+              </span>
+            </div>
+            <div style="padding: 5px 0" class="item">
+              <span><i style="margin-right: 10px" class="fa fa-link"></i>本文链接：</span>
+              <span class="text">
+                <a style="color: black;text-decoration: none" class="link" :href="'https://blog.lljieeeeee.top/article/' + article.articleId" target="_blank">https://blog.lljieeeeee.top/article/{{ article.articleId }}</a>
+              </span>
+            </div>
+            <div style="padding: 5px 0" class="item">
+              <span><i style="margin-right: 10px" class="fa fa-paper-plane"></i>作品采用：</span>
+              <span class="text">《<a style="color: black;text-decoration: none" class="link" href="//creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a>》许可协议授权</span>
+            </div>
+        </div>
       </div>
+    </div>
+    <div style="margin-top: 50px" class="article-card">
+      <h1>评论</h1>
     </div>
     <div class="menu">
       <h3>目录</h3>
@@ -141,7 +163,6 @@ export default {
   background-color: white;
   width: 1000px;
   padding: 50px;
-  min-height: 600px;
   border-radius: 10px;
 
   .article-title {
