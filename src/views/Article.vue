@@ -182,6 +182,7 @@ export default {
   right: 0;
   top: 120px;
   padding: 10px;
+  overflow: hidden;
   background-color: white;
   border-radius: 10px 0 0 10px;
   z-index: 100;
