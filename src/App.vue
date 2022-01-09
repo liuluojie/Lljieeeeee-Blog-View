@@ -27,13 +27,10 @@ export default {
   },
   methods: {
     setBackgroundImage() {
-
-      console.log(document.body.style.backgroundImage)
       document.body.style.backgroundSize = 'cover'
       document.body.style.backgroundRepeat = 'no-repeat'
       document.body.style.backgroundAttachment = 'fixed'
       document.body.style.backgroundImage = `url('https://img12.360buyimg.com/ddimg/jfs/t1/205958/38/10801/801755/61640b21Ea1b21e65/5b5c34618885a626.jpg')`
-      console.log(document.body.style.backgroundImage)
     }
   }
 }

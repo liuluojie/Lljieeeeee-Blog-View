@@ -51,9 +51,13 @@
     </div>
     <div class="aside">
       <div class="info-card introduce">
-
       </div>
       <div class="info-card music">
+        <span class="music-title">
+          <i class="fa fa-music"></i>
+          我的歌单
+        </span>
+        <APlayer></APlayer>
       </div>
       <div class="info-card latest-article">
 
@@ -71,8 +75,13 @@ import {getArticlePage} from "@/api/article";
 import {getCategoryMap} from "@/api/category";
 import {getTagMap} from "@/api/tag";
 
+import APlayer from "@/component/APlayer";
+
 export default {
   name: "Index",
+  components: {
+    APlayer
+  },
   data() {
     return {
       articleList: [],
@@ -249,6 +258,7 @@ export default {
     width: 100%;
     margin-bottom: 20px;
     background-color: white;
+    padding: 5px;
     border-radius: 10px;
   }
   .introduce {
@@ -257,7 +267,14 @@ export default {
   }
   .music{
     width: 100%;
-    height: 200px;
+    font-weight: 600;
+    .music-title {
+      color: skyblue;
+      display:block;
+      padding: 5px 0 5px 10px;
+      font-size: 16px;
+      border-bottom: 1px solid skyblue;
+    }
   }
   .latest-article {
     width: 100%;
