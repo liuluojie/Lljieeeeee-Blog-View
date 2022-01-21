@@ -33,6 +33,16 @@
         </div>
       </div>
     </div>
+    <div class="page-button">
+      <button @click="getArticlePageByCategory(current - 1)" v-show="hasPrevious" id="left" class="ui blue labeled icon button">
+        <i class="left arrow icon"></i>
+        上一页
+      </button>
+      <button @click="getArticlePageByCategory(current + 1)" v-show="hasNext" id="right" class="ui blue right labeled icon button">
+        <i class="right arrow icon"></i>
+        下一页
+      </button>
+    </div>
   </div>
 </template>
 
@@ -47,6 +57,8 @@ export default {
       current: 1,
       size: 8,
       total: 0,
+      hasNext: false,
+      hasPrevious: false,
       articleList: [],
       queryArticleVo: {}
     }
@@ -63,7 +75,8 @@ export default {
       getArticlePageByCategory(this.current, this.size, this.queryArticleVo)
         .then(res => {
           this.articleList = res.data.data.list
-          console.log(res.data.data.list)
+          this.hasPrevious = res.data.data.hasPrevious
+          this.hasNext = res.data.data.hasNext
         })
     }
   }
@@ -91,6 +104,18 @@ export default {
 
   .category-list-card {
     height: 100px;
+  }
+
+}
+
+.page-button {
+  margin-top: 20px;
+  #left {
+    float: left;
+  }
+
+  #right {
+    float: right;
   }
 }
 </style>
