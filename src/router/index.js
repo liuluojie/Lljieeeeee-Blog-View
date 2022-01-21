@@ -4,7 +4,9 @@ import VueRouter from 'vue-router'
 import Index from "@/views/Index";
 import Article from "@/views/Article";
 import Archive from "@/views/Archive";
-
+import Category from "@/views/Category";
+import CategoryArticleList from "@/views/CategoryArticleList";
+import Error404 from "@/views/Error404";
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,6 +31,24 @@ const routes = [
       title: '归档'
     }
   },
+  {
+    path: "/category",
+    component: Category,
+    meta: {
+      title: '分类'
+    }
+  },
+  {
+    path: "/category/:name",
+    component: CategoryArticleList,
+    meta: {
+      title: '分类'
+    }
+  },
+  {
+    path: '*',
+    component: Error404
+  }
 ]
 
 const router = new VueRouter({

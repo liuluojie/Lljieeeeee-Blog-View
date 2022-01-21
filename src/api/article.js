@@ -13,3 +13,12 @@ export function getArticleById(id) {
         url: `/article/${id}`
     })
 }
+
+
+export function getArticlePageByCategory(current, size, queryArticleVo) {
+    return request({
+        method: 'post',
+        url: `/article/getArticlePageByCategory/${current}/${size}`,
+        data: queryArticleVo
+    })
+}
