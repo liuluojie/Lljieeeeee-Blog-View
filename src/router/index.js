@@ -6,6 +6,8 @@ import Article from "@/views/Article";
 import Archive from "@/views/Archive";
 import Category from "@/views/Category";
 import CategoryArticleList from "@/views/CategoryArticleList";
+import Tag from "@/views/Tag";
+import TagArticleList from "@/views/TagArticleList";
 import Error404 from "@/views/Error404";
 Vue.use(VueRouter)
 
@@ -43,6 +45,20 @@ const routes = [
     component: CategoryArticleList,
     meta: {
       title: '分类'
+    }
+  },
+  {
+    path: "/tag",
+    component: Tag,
+    meta: {
+      title: '标签'
+    }
+  },
+  {
+    path: "/tag/:name",
+    component: TagArticleList,
+    meta: {
+      title: '标签'
     }
   },
   {

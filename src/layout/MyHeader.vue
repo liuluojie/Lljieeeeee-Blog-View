@@ -8,7 +8,7 @@
       <ul>
         <li><a href="/">首页</a></li>
         <li><a href="/category">分类</a></li>
-        <li><a href="">标签</a></li>
+        <li><a href="/tag">标签</a></li>
         <li><a href="/archive">归档</a></li>
         <li><a href="">心情</a></li>
         <li><a href="">留言板</a></li>

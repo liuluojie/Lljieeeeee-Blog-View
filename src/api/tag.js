@@ -10,6 +10,6 @@ export function getAllTag() {
 export function getTagMap() {
     return request({
         method: 'get',
-        url: `/category/getTagMap`
+        url: `/tag/getTagMap`
     })
 }

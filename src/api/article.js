@@ -22,3 +22,11 @@ export function getArticlePageByCategory(current, size, queryArticleVo) {
         data: queryArticleVo
     })
 }
+
+export function getArticlePageByTag(current, size, queryArticleVo) {
+    return request({
+        method: 'post',
+        url: `/article/getArticlePageByTag/${current}/${size}`,
+        data: queryArticleVo
+    })
+}

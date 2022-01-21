@@ -101,11 +101,6 @@ export default {
       padding: 10px;
     }
   }
-
-  .category-list-card {
-    height: 100px;
-  }
-
 }
 
 .page-button {
