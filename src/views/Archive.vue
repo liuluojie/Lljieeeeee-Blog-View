@@ -6,83 +6,19 @@
       </div>
       <div class="archive-list">
         <ul>
-          <li>
-            <div @click="getStyle" :style="style" class="archive-card">
+          <li v-for="archiveArticle in archiveArticleList" :key="archiveArticle.year + archiveArticle.month">
+            <div class="archive-card">
               <div class="archive-card-month">
-                2021 年 11 月
-                <i v-if="style.height" class="fa fa-angle-down"></i>
-                <i v-else class="fa fa-angle-up"></i>
+                {{ archiveArticle.year }} 年 {{ archiveArticle.month }} 月
+                <i v-if="archiveArticle.style" class="fa fa-angle-up"></i>
+                <i v-else class="fa fa-angle-down"></i>
               </div>
               <ol>
-                <li class="archive-card-day"><a href="#">03-21：树结构的实际应用</a></li>
-                <li class="archive-card-day"><a href="#">03-18：Spring Boot 整合 腾讯云对象存储 COS</a></li>
-                <li class="archive-card-day"><a href="#">03-18：树结构</a></li>
-                <li class="archive-card-day"><a href="#">03-16：哈希表</a></li>
-                <li class="archive-card-day"><a href="#">03-15：查找</a></li>
-                <li class="archive-card-day"><a href="#">03-13：排序</a></li>
-                <li class="archive-card-day"><a href="#">03-10：递归</a></li>
-                <li class="archive-card-day"><a href="#">03-07：栈</a></li>
-                <li class="archive-card-day"><a href="#">03-02：MD5加盐加密</a></li>
-              </ol>
-            </div>
-          </li>
-          <li>
-            <div @click="getStyle" :style="style" class="archive-card">
-              <div class="archive-card-month">
-                2021 年 11 月
-                <i v-if="style.height" class="fa fa-angle-down"></i>
-                <i v-else class="fa fa-angle-up"></i>
-              </div>
-              <ol>
-                <li class="archive-card-day"><a href="#">03-21：树结构的实际应用</a></li>
-                <li class="archive-card-day"><a href="#">03-18：Spring Boot 整合 腾讯云对象存储 COS</a></li>
-                <li class="archive-card-day"><a href="#">03-18：树结构</a></li>
-                <li class="archive-card-day"><a href="#">03-16：哈希表</a></li>
-                <li class="archive-card-day"><a href="#">03-15：查找</a></li>
-                <li class="archive-card-day"><a href="#">03-13：排序</a></li>
-                <li class="archive-card-day"><a href="#">03-10：递归</a></li>
-                <li class="archive-card-day"><a href="#">03-07：栈</a></li>
-                <li class="archive-card-day"><a href="#">03-02：MD5加盐加密</a></li>
-              </ol>
-            </div>
-          </li>
-          <li>
-            <div @click="getStyle" :style="style" class="archive-card">
-              <div class="archive-card-month">
-                2021 年 11 月
-                <i v-if="style.height" class="fa fa-angle-down"></i>
-                <i v-else class="fa fa-angle-up"></i>
-              </div>
-              <ol>
-                <li class="archive-card-day"><a href="#">03-21：树结构的实际应用</a></li>
-                <li class="archive-card-day"><a href="#">03-18：Spring Boot 整合 腾讯云对象存储 COS</a></li>
-                <li class="archive-card-day"><a href="#">03-18：树结构</a></li>
-                <li class="archive-card-day"><a href="#">03-16：哈希表</a></li>
-                <li class="archive-card-day"><a href="#">03-15：查找</a></li>
-                <li class="archive-card-day"><a href="#">03-13：排序</a></li>
-                <li class="archive-card-day"><a href="#">03-10：递归</a></li>
-                <li class="archive-card-day"><a href="#">03-07：栈</a></li>
-                <li class="archive-card-day"><a href="#">03-02：MD5加盐加密</a></li>
-              </ol>
-            </div>
-          </li>
-          <li>
-            <div @click="getStyle" :style="style" class="archive-card">
-              <div class="archive-card-month">
-                2021 年 11 月
-                <i v-if="style.height" class="fa fa-angle-down"></i>
-                <i v-else class="fa fa-angle-up"></i>
-              </div>
-              <ol>
-                <li class="archive-card-day"><a href="#">03-21：树结构的实际应用</a></li>
-                <li class="archive-card-day"><a href="#">03-18：Spring Boot 整合 腾讯云对象存储 COS</a></li>
-                <li class="archive-card-day"><a href="#">03-18：树结构</a></li>
-                <li class="archive-card-day"><a href="#">03-16：哈希表</a></li>
-                <li class="archive-card-day"><a href="#">03-15：查找</a></li>
-                <li class="archive-card-day"><a href="#">03-13：排序</a></li>
-                <li class="archive-card-day"><a href="#">03-10：递归</a></li>
-                <li class="archive-card-day"><a href="#">03-07：栈</a></li>
-                <li class="archive-card-day"><a href="#">03-02：MD5加盐加密</a></li>
+                <li v-for="article in archiveArticle.archiveDTOList" class="archive-card-day">
+                  <a :href="'/article/' + article.articleId">
+                    {{archiveArticle.month}}-{{article.date}}： {{article.articleTitle}}
+                  </a>
+                </li>
               </ol>
             </div>
           </li>
@@ -93,22 +29,30 @@
 </template>
 
 <script>
+import {getArchiveList} from "@/api/article";
+
 export default {
   name: "Archive",
   data() {
     return {
        style: {
          'height': '55px'
-       }
+       },
+      archiveArticleList: []
     }
   },
+  created() {
+    this.getArchiveList()
+  },
   methods: {
-    getStyle() {
-      if (this.style.height) {
-        this.style = {'height': ''}
-      }else {
-        this.style = {'height': '55px'}
-      }
+    getArchiveList() {
+      getArchiveList()
+        .then(res => {
+          this.archiveArticleList = res.data.data.list
+        })
+    },
+    test() {
+      console.log(this.archiveArticleList)
     }
   }
 }
@@ -180,6 +124,10 @@ export default {
       color: black;
     }
   }
+}
+
+.is-zhedie {
+  height: 55px;
 }
 
 </style>

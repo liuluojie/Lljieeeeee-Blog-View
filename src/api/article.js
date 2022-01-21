@@ -30,3 +30,10 @@ export function getArticlePageByTag(current, size, queryArticleVo) {
         data: queryArticleVo
     })
 }
+
+export function getArchiveList() {
+    return request({
+        method: 'get',
+        url: `/article/getArchiveList`
+    })
+}
